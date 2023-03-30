@@ -1,0 +1,58 @@
+
+from enum import Enum
+
+class WeaponType(Enum):
+    HEADBUTT = 1
+    FLAME_THROWER = 2
+    HYDRO_PUMP = 3
+    KICK = 4
+    ELBOW= 5
+    PUNCH = 6
+
+class Pokemon:
+    _ids = set()
+    _types = set()
+
+    def __init__(self, pokemon_id=None, pokemon_name=None, weapon_type=None, health_points=100,
+                 attack_rating=10, defense_rating=10):
+        self.pokemon_id = pokemon_id
+        self.pokemon_name = pokemon_name
+        self.weapon_type = weapon_type
+        self.health_points = health_points
+        self.attack_rating = attack_rating
+        self.defense_rating = defense_rating
+        self._ids.add(pokemon_id)
+        self._types.add(weapon_type)
+
+    def get_pokemon_name(self):
+        return self.pokemon_name
+
+    def get_weapon_type(self):
+        return self.weapon_type
+
+    def get_health_points(self):
+        return self.health_points
+
+    def get_attack_rating(self):
+        return self.attack_rating
+
+    def get_defense_rating(self):
+        return self.defense_rating
+
+    def __str__(self):
+        return "Pokemon ID {} with name {} has as weapon {} and health {}".format(self.pokemon_id, self.pokemon_name,
+                                                                                  self.weapon_type.name,
+                                                                                  self.health_points)
+
+    def is_alive(self):
+        return self.health_points > 0
+
+    def fight_defense(self, attack_rating):
+        damage = attack_rating - self.defense_rating
+        if damage > 0:
+            self.health_points -= damage
+
+    def fight_attack(self, pokemon):
+        attack_rating = self.attack_rating + self.weapon_type.value
+        pokemon.fight_defense(attack_rating)
+        return pokemon.is_alive()
