@@ -1,5 +1,5 @@
 # pokemon
-link al repositorio: 
+link al repositorio: https://github.com/frankiyonki/pokemon.git
 Ejercicio 1 (5 puntos) 
 
 Pokémon, qué empezó originalmente como un videojuego, gracias a su elevada popularidad logró expandirse a otros medios de entretenimiento como ha sido series de televisión, películas e incluso juegos de cartas.
